@@ -46,5 +46,13 @@ def get_measurements_csv():
     )
 
 
+@app.route("/space/")
+def get_number_spacers():
+    response = requests.get('http://api.open-notify.org/astros.json')
+    if response.status_code == 200:
+        return make_response(str(response.json()['number']))
+    return make_response(f'Something went wrong...</br> Status code - {response.status_code}')
+
+
 if __name__ == "__main__":
     app.run()
