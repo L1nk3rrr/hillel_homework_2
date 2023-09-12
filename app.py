@@ -1,11 +1,25 @@
 import logging
 
+import requests
 from flask import Flask, make_response, render_template, request
 
 import utils
 
 app = Flask(__name__)
 logger = logging.Logger(__name__)
+
+endpoints = [
+    {"url": "/requrements", "description": "Get requirements data"},
+    {"url": "/requrements_beauty", "description": "Get requirements data with beauty"},
+    {"url": "/generate-users/", "description": "Generate fake users (with query param 'qty', by default it's 100)"},
+    {"url": "/mean/", "description": "Calculate average measurements (with query param 'rounding', be default it's 2)"},
+    {"url": "/space/", "description": "Get the number of astronauts in space"},
+]
+
+
+@app.route("/")
+def index():
+    return render_template('index.html', endpoints=endpoints)
 
 
 @app.route("/requrements")

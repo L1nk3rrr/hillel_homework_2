@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>API Index</title>
+</head>
+<body>
+    <h1>API Endpoints</h1>
+    <ul>
+        {% for endpoint in endpoints %}
+        <li><a href="{{ endpoint.url }}">{{ endpoint.url }}</a> - {{ endpoint.description }}</li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
